@@ -22,5 +22,5 @@ func (p person) print() {
 }
 
 func (personPointer *person) update(newFirstname string) {
-	personPointer.firstname = newFirstname
+	(*personPointer).firstname = newFirstname
 }
