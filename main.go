@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	// cards := newDeck()
 	// cards.print()
@@ -12,5 +10,7 @@ func main() {
 	//Working with structs
 	alex := newPerson("alex", "Doe", contactInfo{email: "utsho@test.com", zip: 00000})
 
-	fmt.Println(alex)
+	alex.print()
+	alex.update("Bob")
+	alex.print()
 }
