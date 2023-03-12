@@ -11,6 +11,9 @@ func main() {
 	alex := newPerson("alex", "Doe", contactInfo{email: "utsho@test.com", zip: 00000})
 
 	alex.print()
-	alex.update("Bob")
+	// alex.update("Bob")
+	// alex.print()
+	alexPointer := &alex
+	alexPointer.update("Bob")
 	alex.print()
 }
