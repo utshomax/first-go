@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -33,13 +34,25 @@ func printGreeting(b bot) {
 	fmt.Println(b.getGreeting())
 }
 
+//My custom logwriter
+
+type logWritter struct{}
+
+func (logWritter) Write(bs []byte) (int, error) {
+	fmt.Println(string(bs))
+	return len(bs), nil
+}
+
 func getData() {
 	data, err := http.Get("https://www.google.com")
 	if err != nil {
 		fmt.Println("Error")
 		os.Exit(1)
 	}
-	bs := make([]byte, 99999)
-	data.Body.Read(bs)
-	fmt.Println(string(bs))
+	// bs := make([]byte, 99999)
+	// data.Body.Read(bs)
+	// fmt.Println(string(bs))
+	//addding writter
+	lw := logWritter{}
+	io.Copy(lw, data.Body)
 }
